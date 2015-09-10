@@ -1,8 +1,9 @@
 /**
  * main.js
  */
-window.main = new (function($){
+window.main = new (function(){
 	// var it79 = this.it79 = require('iterate79');
+	var jQuery = $ = require('./scripts/jquery.js');
 	var php = this.php = require('phpjs');
 	var __dirname = (function(){ var rtn = (function() { if (document.currentScript) {return document.currentScript.src;} else { var scripts = document.getElementsByTagName('script'), script = scripts[scripts.length-1]; if (script.src) {return script.src;} } })(); rtn = rtn.replace(/\\/g, '/').replace(/\/[^\/]*\/?$/, ''); return rtn; })();
 	var socket = this.socket = require('../../../lib/')
@@ -40,6 +41,7 @@ window.main = new (function($){
 	 * WebSocket疎通確認
 	 */
 	this.socketTest = function(){
+		alert('send command `socketTest`');
 		socket.send(
 			'socketTest',
 			{'message': 'socketTest from frontend.'} ,
@@ -51,4 +53,4 @@ window.main = new (function($){
 		return this;
 	}
 
-})(jQuery);
+})();

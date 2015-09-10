@@ -4,6 +4,7 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
+    "up": "node ./lib/cmd/server.js",
     "test": "gulp; mocha --ui tdd ./tests/"
   },
   "repository": {

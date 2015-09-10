@@ -84,7 +84,7 @@ gulp.task("watch", function() {
 	gulp.watch(["tests/src/**/*"], _tasks);
 
 	var port = packageJson.baobabConfig.defaultPort;
-	var svrCtrl = require('baobab-fw').createSvrCtrl();
+	var svrCtrl = require('./lib/index.js').createSvrCtrl();
 	svrCtrl.boot(function(){
 		require('child_process').spawn('open',[svrCtrl.getUrl()]);
 	});
