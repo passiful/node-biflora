@@ -1,4 +1,5 @@
 var conf = require('./lib/').conf();
+var path = require('path');
 var gulp = require('gulp');
 var sass = require('gulp-sass');//CSSコンパイラ
 var autoprefixer = require("gulp-autoprefixer");//CSSにベンダープレフィックスを付与してくれる
@@ -15,7 +16,8 @@ var _tasks = [
 	'.css',
 	'.css.scss',
 	'main.js',
-	'.js'
+	'.js',
+	'baobab-fw-frontend'
 ];
 
 
@@ -45,7 +47,7 @@ gulp.task("main.js", function() {
 		}))
 		.pipe(plumber())
 		.pipe(concat('common/main.js'))
-		.pipe(uglify())
+		// .pipe(uglify())
 		.pipe(gulp.dest( conf.get().frontendDocumentRoot ))
 	;
 });
@@ -54,7 +56,7 @@ gulp.task("main.js", function() {
 gulp.task(".js", function() {
 	gulp.src(["tests/src/**/*.js", "!tests/src/common/**/*"])
 		.pipe(plumber())
-		.pipe(uglify())
+		// .pipe(uglify())
 		.pipe(gulp.dest( conf.get().frontendDocumentRoot ))
 	;
 });
@@ -76,6 +78,18 @@ gulp.task(".html.twig", function() {
 		}))
 		.pipe(rename({extname: ''}))
 		.pipe(gulp.dest( conf.get().frontendDocumentRoot ))
+	;
+});
+
+// baobab-fw.js (frontend) を処理
+gulp.task("baobab-fw-frontend", function() {
+	gulp.src(["src/baobab-fw/baobab-fw.js"])
+		.pipe(browserify({
+		}))
+		.pipe(plumber())
+		.pipe(concat('baobab-fw/baobab-fw.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest( path.resolve(__dirname, './frontend/') ))
 	;
 });
 
