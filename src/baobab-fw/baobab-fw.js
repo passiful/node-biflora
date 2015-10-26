@@ -1,8 +1,8 @@
 window.baobabFw = (function(){
 
-    var baobabFw = function(){}
+    var BaobabFw = function(){}
 
-    baobabFw.prototype.createSocket = function(main, io, apis){
+    BaobabFw.prototype.createSocket = function(main, io, apis){
         var host = window.location.origin;
         // host = 'http://127.0.0.1:60603/';
 
@@ -45,5 +45,5 @@ window.baobabFw = (function(){
         })(main, io, host, apis);
     }
 
-    return new baobabFw();
+    return new BaobabFw();
 })();
