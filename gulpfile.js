@@ -95,7 +95,7 @@ gulp.task("baobab-fw-frontend", function() {
 
 // src 中のすべての拡張子を監視して処理
 gulp.task("watch", function() {
-	gulp.watch(["tests/src/**/*"], _tasks);
+	gulp.watch(["lib/**/*","src/**/*","tests/src/**/*"], _tasks);
 
 	var port = packageJson.baobabConfig.defaultPort;
 	var svrCtrl = require('./lib/index.js').createSvrCtrl();
