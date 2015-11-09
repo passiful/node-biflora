@@ -10,8 +10,8 @@ window.baobabFw = (function(){
 			_this = this;
 			this.main = main;
 			this.apis = apis;
-			this.temporaryApis = {};
 			this.temporaryApis = require('../../lib/temporaryApis.js');
+			this.pingApi = require('../../lib/pingApi.js');
 
 			_this.socket = io.connect( host );
 			this.send = function(api, data, callback){
@@ -20,15 +20,19 @@ window.baobabFw = (function(){
 					data: data ,
 					callback: _this.temporaryApis.addNewFunction(callback)
 				};
-				this.socket.emit('command',args);
+				args.pingName = _this.pingApi.addNewTimer(args.callback);
+
+				this.socket.emit('baobab-command',args);
 				return this;
 			}
-			_this.socket.on('command', function (cmd) {
+			_this.socket.on('baobab-command', function (cmd) {
 				// console.log(cmd);
 				cmd = cmd || {};
 				cmd.api = cmd.api || '';
 				cmd.data = cmd.data || {};
 				cmd.callback = cmd.callback || null;
+				cmd.pingName = cmd.pingName || null;
+				_this.socket.emit('baobab-pingAnswerCall', cmd.pingName);
 
 				var api = _this.temporaryApis.getCallbackFunction(cmd.api);
 				var temporaryApiName = cmd.callback;
@@ -41,6 +45,9 @@ window.baobabFw = (function(){
 						_this.temporaryApis.callRemoteFunction( _this, temporaryApiName, data );
 					}, _this.main, _this );
 				}
+			});
+			_this.socket.on('baobab-pingAnswerCall', function (cmd) {
+				_this.pingApi.clearTimer(cmd);
 			});
 		})(main, io, host, apis);
 	}
