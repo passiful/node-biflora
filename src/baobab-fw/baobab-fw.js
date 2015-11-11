@@ -22,11 +22,15 @@ window.baobabFw = (function(){
 				};
 				args.pingName = _this.pingApi.addNewTimer(args.callback);
 
-				this.socket.emit('baobab-command',args);
+				this.socket.emit('baobab-command',JSON.stringify(args));
 				return this;
 			}
 			_this.socket.on('baobab-command', function (cmd) {
 				// console.log(cmd);
+				try {
+					cmd = JSON.parse(cmd);
+				} catch (e) {
+				}
 				cmd = cmd || {};
 				cmd.api = cmd.api || '';
 				cmd.data = cmd.data || {};

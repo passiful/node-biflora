@@ -1,7 +1,7 @@
 {
   "name": "baobab-fw",
   "version": "0.0.1-alpha.1",
-  "description": "",
+  "description": "Web application framework on WebSocket.",
   "main": "lib/index.js",
   "scripts": {
     "up": "node ./lib/cmd/server.js",
