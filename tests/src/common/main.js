@@ -53,4 +53,19 @@ window.main = new (function(){
 		return this;
 	}
 
+	/**
+	 * 偽の値を送ってみる確認
+	 */
+	this.socketSendFalse = function(){
+		alert('send command `socketSendFalse`');
+		socket.send(
+			'socketSendFalse',
+			false ,
+			function(data){
+				console.log(data);
+			}
+		);
+		return this;
+	}
+
 })();

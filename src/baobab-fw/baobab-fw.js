@@ -7,7 +7,7 @@ window.baobabFw = (function(){
 		// host = 'http://127.0.0.1:60603/';
 
 		return new (function(main, io, host, apis){
-			_this = this;
+			var _this = this;
 			this.main = main;
 			this.apis = apis;
 			this.temporaryApis = require('../../lib/temporaryApis.js');
@@ -22,7 +22,8 @@ window.baobabFw = (function(){
 				};
 				args.pingName = _this.pingApi.addNewTimer(args.callback);
 
-				this.socket.emit('baobab-command',JSON.stringify(args));
+				// console.log(args);
+				_this.socket.emit('baobab-command', JSON.stringify(args));
 				return this;
 			}
 			_this.socket.on('baobab-command', function (cmd) {
@@ -33,7 +34,7 @@ window.baobabFw = (function(){
 				}
 				cmd = cmd || {};
 				cmd.api = cmd.api || '';
-				cmd.data = cmd.data || {};
+				// cmd.data = cmd.data || {};
 				cmd.callback = cmd.callback || null;
 				cmd.pingName = cmd.pingName || null;
 				_this.socket.emit('baobab-pingAnswerCall', cmd.pingName);
