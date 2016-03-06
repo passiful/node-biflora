@@ -1,8 +1,8 @@
-window.baobabFw = (function(){
+window.biflora = (function(){
 
-	var BaobabFw = function(){}
+	var biflora = function(){}
 
-	BaobabFw.prototype.createSocket = function(main, io, apis){
+	biflora.prototype.createSocket = function(main, io, apis){
 		var host = window.location.origin;
 		// host = 'http://127.0.0.1:60603/';
 
@@ -23,10 +23,10 @@ window.baobabFw = (function(){
 				args.pingName = _this.pingApi.addNewTimer(args.callback);
 
 				// console.log(args);
-				_this.socket.emit('baobab-command', JSON.stringify(args));
+				_this.socket.emit('biflora-command', JSON.stringify(args));
 				return this;
 			}
-			_this.socket.on('baobab-command', function (cmd) {
+			_this.socket.on('biflora-command', function (cmd) {
 				// console.log(cmd);
 				try {
 					cmd = JSON.parse(cmd);
@@ -37,7 +37,7 @@ window.baobabFw = (function(){
 				// cmd.data = cmd.data || {};
 				cmd.callback = cmd.callback || null;
 				cmd.pingName = cmd.pingName || null;
-				_this.socket.emit('baobab-pingAnswerCall', cmd.pingName);
+				_this.socket.emit('biflora-pingAnswerCall', cmd.pingName);
 
 				var api = _this.temporaryApis.getCallbackFunction(cmd.api);
 				var temporaryApiName = cmd.callback;
@@ -51,11 +51,11 @@ window.baobabFw = (function(){
 					}, _this.main, _this );
 				}
 			});
-			_this.socket.on('baobab-pingAnswerCall', function (cmd) {
+			_this.socket.on('biflora-pingAnswerCall', function (cmd) {
 				_this.pingApi.clearTimer(cmd);
 			});
 		})(main, io, host, apis);
 	}
 
-	return new BaobabFw();
+	return new biflora();
 })();

@@ -1,22 +1,22 @@
 {
-  "name": "baobab-fw",
+  "name": "biflora",
   "version": "0.0.1-alpha.1",
   "description": "Web application framework on WebSocket.",
-  "main": "lib/index.js",
+  "main": "lib/main.js",
   "scripts": {
     "up": "node ./lib/cmd/server.js",
     "test": "gulp; mocha --ui tdd ./tests/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tomk79/BaobabFW.git"
+    "url": "git+https://github.com/tomk79/node-biflora.git"
   },
   "author": "Tomoya Koyanagi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tomk79/BaobabFW/issues"
+    "url": "https://github.com/tomk79/node-biflora/issues"
   },
-  "homepage": "https://github.com/tomk79/BaobabFW#readme",
+  "homepage": "https://github.com/tomk79/node-biflora#readme",
   "dependencies": {
     "express": "^4.13.3",
     "phpjs": "^1.3.2",
@@ -38,8 +38,8 @@
     "phantomjs": "^1.9.18",
     "selenium-webdriver": "^2.46.1"
   },
-  "baobabConfig": {
-    "baobabConfig": 8080,
+  "bifloraConfig": {
+    "defaultPort": 8080,
     "frontendDocumentRoot": "./tests/htdocs/",
     "backendJs": "./tests/backendJs/main.js",
     "backendApis": "./tests/backendJs/apis/"

@@ -1,4 +1,4 @@
-var conf = require('./lib/').conf();
+var conf = require('./lib/main.js').conf();
 var path = require('path');
 var gulp = require('gulp');
 var sass = require('gulp-sass');//CSSコンパイラ
@@ -17,7 +17,7 @@ var _tasks = [
 	'.css.scss',
 	'main.js',
 	'.js',
-	'baobab-fw-frontend'
+	'biflora-frontend'
 ];
 
 
@@ -81,13 +81,13 @@ gulp.task(".html.twig", function() {
 	;
 });
 
-// baobab-fw.js (frontend) を処理
-gulp.task("baobab-fw-frontend", function() {
-	gulp.src(["src/baobab-fw/baobab-fw.js"])
+// biflora.js (frontend) を処理
+gulp.task("biflora-frontend", function() {
+	gulp.src(["src/biflora/biflora.js"])
 		.pipe(browserify({
 		}))
 		.pipe(plumber())
-		.pipe(concat('baobab-fw/baobab-fw.js'))
+		.pipe(concat('biflora/biflora.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest( path.resolve(__dirname, './frontend/') ))
 	;
@@ -97,8 +97,8 @@ gulp.task("baobab-fw-frontend", function() {
 gulp.task("watch", function() {
 	gulp.watch(["lib/**/*","src/**/*","tests/src/**/*"], _tasks);
 
-	var port = packageJson.baobabConfig.defaultPort;
-	var svrCtrl = require('./lib/index.js').createSvrCtrl();
+	var port = packageJson.bifloraConfig.defaultPort;
+	var svrCtrl = require('./lib/main.js').createSvrCtrl();
 	svrCtrl.boot(function(){
 		require('child_process').spawn('open',[svrCtrl.getUrl()]);
 	});

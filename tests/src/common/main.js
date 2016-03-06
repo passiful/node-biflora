@@ -6,7 +6,7 @@ window.main = new (function(){
 	var jQuery = $ = require('./scripts/jquery.js');
 	var php = this.php = require('phpjs');
 	var __dirname = (function(){ var rtn = (function() { if (document.currentScript) {return document.currentScript.src;} else { var scripts = document.getElementsByTagName('script'), script = scripts[scripts.length-1]; if (script.src) {return script.src;} } })(); rtn = rtn.replace(/\\/g, '/').replace(/\/[^\/]*\/?$/, ''); return rtn; })();
-	var socket = this.socket = window.baobabFw
+	var socket = this.socket = window.biflora
 		.createSocket(
 			this,
 			io,
