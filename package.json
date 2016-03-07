@@ -37,11 +37,5 @@
     "mocha": "^2.3.0",
     "phantomjs": "^1.9.18",
     "selenium-webdriver": "^2.46.1"
-  },
-  "bifloraConfig": {
-    "defaultPort": 8080,
-    "frontendDocumentRoot": "./tests/htdocs/",
-    "backendJs": "./tests/backendJs/main.js",
-    "backendApis": "./tests/backendJs/apis/"
   }
 }

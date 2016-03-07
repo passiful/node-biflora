@@ -1,4 +1,3 @@
-var conf = require('./lib/main.js').conf();
 var path = require('path');
 var gulp = require('gulp');
 var sass = require('gulp-sass');//CSSコンパイラ
@@ -28,7 +27,7 @@ gulp.task('.css.scss', function(){
 		.pipe(sass())
 		.pipe(autoprefixer())
 		.pipe(rename({extname: ''}))
-		.pipe(gulp.dest( conf.get().frontendDocumentRoot ))
+		.pipe(gulp.dest( './tests/htdocs/' ))
 	;
 });
 
@@ -36,7 +35,7 @@ gulp.task('.css.scss', function(){
 gulp.task('.css', function(){
 	gulp.src("tests/src/**/*.css")
 		.pipe(plumber())
-		.pipe(gulp.dest( conf.get().frontendDocumentRoot ))
+		.pipe(gulp.dest( './tests/htdocs/' ))
 	;
 });
 
@@ -48,7 +47,7 @@ gulp.task("main.js", function() {
 		.pipe(plumber())
 		.pipe(concat('common/main.js'))
 		// .pipe(uglify())
-		.pipe(gulp.dest( conf.get().frontendDocumentRoot ))
+		.pipe(gulp.dest( './tests/htdocs/' ))
 	;
 });
 
@@ -57,7 +56,7 @@ gulp.task(".js", function() {
 	gulp.src(["tests/src/**/*.js", "!tests/src/common/**/*"])
 		.pipe(plumber())
 		// .pipe(uglify())
-		.pipe(gulp.dest( conf.get().frontendDocumentRoot ))
+		.pipe(gulp.dest( './tests/htdocs/' ))
 	;
 });
 
@@ -65,7 +64,7 @@ gulp.task(".js", function() {
 gulp.task(".html", function() {
 	gulp.src(["tests/src/**/*.html", "tests/src/**/*.htm"])
 		.pipe(plumber())
-		.pipe(gulp.dest( conf.get().frontendDocumentRoot ))
+		.pipe(gulp.dest( './tests/htdocs/' ))
 	;
 });
 
@@ -77,7 +76,7 @@ gulp.task(".html.twig", function() {
 			data: {packageJson: packageJson}
 		}))
 		.pipe(rename({extname: ''}))
-		.pipe(gulp.dest( conf.get().frontendDocumentRoot ))
+		.pipe(gulp.dest( './tests/htdocs/' ))
 	;
 });
 
@@ -97,8 +96,7 @@ gulp.task("biflora-frontend", function() {
 gulp.task("watch", function() {
 	gulp.watch(["lib/**/*","src/**/*","tests/src/**/*"], _tasks);
 
-	var port = packageJson.bifloraConfig.defaultPort;
-	var svrCtrl = require('./lib/main.js').createSvrCtrl();
+	var svrCtrl = require('./tests/backendJs/serverCtrl.js');
 	svrCtrl.boot(function(){
 		require('child_process').spawn('open',[svrCtrl.getUrl()]);
 	});
