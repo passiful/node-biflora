@@ -26,6 +26,17 @@ window.biflora = (function(){
 				_this.socket.emit('biflora-command', JSON.stringify(args));
 				return this;
 			}
+			this.joinRoom = function(room, join, callback){
+				var args = {
+					'room': room ,
+					'join': join,
+					'callback': _this.temporaryApis.addNewFunction(callback)
+				};
+				args.pingName = _this.pingApi.addNewTimer(args.callback);
+				this.socket.emit('biflora-joinRoom', JSON.stringify(args));
+				return this;
+			}
+
 			_this.socket.on('biflora-command', function (cmd) {
 				// console.log(cmd);
 				try {
