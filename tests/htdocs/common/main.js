@@ -13376,6 +13376,7 @@ window.main = new (function(){
 			roomName,
 			join ,
 			function(data){
+				alert('join to room done.');
 				console.log(data);
 			}
 		);
