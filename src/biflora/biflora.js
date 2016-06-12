@@ -16,9 +16,9 @@ window.biflora = (function(){
 			_this.socket = io.connect( host );
 			this.send = function(api, data, callback){
 				var args = {
-					api: api ,
-					data: data ,
-					callback: _this.temporaryApis.addNewFunction(callback)
+					'api': api ,
+					'data': data ,
+					'callback': _this.temporaryApis.addNewFunction(callback)
 				};
 				args.pingName = _this.pingApi.addNewTimer(args.callback);
 

@@ -54,6 +54,22 @@ window.main = new (function(){
 	}
 
 	/**
+	 * broadcast
+	 */
+	this.broadcastTest = function(){
+		alert('send command `broadcast`');
+		socket.send(
+			'broadcast',
+			{'message': 'broadcastTest from frontend.'} ,
+			function(data){
+				alert('callback function is called!');
+				console.log(data);
+			}
+		);
+		return this;
+	}
+
+	/**
 	 * 偽の値を送ってみる確認
 	 */
 	this.socketSendFalse = function(){
@@ -67,5 +83,37 @@ window.main = new (function(){
 		);
 		return this;
 	}
+
+	/**
+	 * roomに参加する/退場する
+	 */
+	this.joinRoom = function(roomName, join){
+		alert((join?'join':'leave')+' to room `'+roomName+'`');
+		socket.joinRoom(
+			roomName,
+			join ,
+			function(data){
+				console.log(data);
+			}
+		);
+		return this;
+	}
+
+	/**
+	 * sendToRoom
+	 */
+	this.sendToRoom = function(roomName){
+		alert('send to room `'+roomName+'`');
+		socket.send(
+			'sendToRoom',
+			{'message': 'sendToRoom from frontend.','room':roomName} ,
+			function(data){
+				alert('callback function is called!');
+				console.log(data);
+			}
+		);
+		return this;
+	}
+
 
 })();
