@@ -1,10 +1,10 @@
 /**
  * API: sendToRoom
  */
-module.exports = function( data, callback, main, socket ){
+module.exports = function( data, callback, main, biflora ){
 	// console.log(main);
 	data.main = main;
-	socket.sendToRoom('showSocketTest', data, data.room);
+	biflora.sendToRoom('showSocketTest', data, data.room);
 	callback(data);
 	return;
 }

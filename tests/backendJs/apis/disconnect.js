@@ -1,10 +1,9 @@
 /**
- * API: broadcast
+ * API: disconnect
  */
 module.exports = function( data, callback, main, biflora ){
 	// console.log(main);
-	data.main = main;
-	biflora.broadcast('showSocketTest', data);
-	callback(data);
+	console.log('USER DISCONNECT');
+	console.log('-- disconnected user info:', data);
 	return;
 }

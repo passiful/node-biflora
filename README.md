@@ -18,11 +18,19 @@ var biflora = require('biflora');
 
 var main = new yourMainObjectClass();
 var backendApis = {
-	'api1': function( data, callback, main, socket ){
-		callback('result');
+	// custom API
+	'api1': function( data, callback, main, biflora ){
+		callback('result1');
 	} ,
-	'api2': function( data, callback, main, socket ){
-		callback('result');
+	// custom API
+	'api2': function( data, callback, main, biflora ){
+		callback('result2');
+	} ,
+	// API name "disconnect" has been reserved.
+	// Fired on user disconnection.
+	'disconnect': function( data, callback, main, biflora ){
+		console.log('USER DISCONNECT');
+		console.log('-- disconnected user info:', data);
 	}
 };
 
@@ -55,14 +63,27 @@ server.listen( 3000, function(){
 			new yourMainObjectClass(),
 			io,
 			{
-				'api1': function( data, callback, main, socket ){
-					callback('result');
+				// custom API
+				'api1': function( data, callback, main, biflora ){
+					callback('result1');
 				},
-				'api2': function( data, callback, main, socket ){
-					callback('result');
+				// custom API
+				'api2': function( data, callback, main, biflora ){
+					callback('result2');
 				}
 			}
 		)
 	;
 </script>
 ```
+
+## ライセンス - License
+
+MIT License
+
+
+## 作者 - Author
+
+- Tomoya Koyanagi <tomk79@gmail.com>
+- website: <http://www.pxt.jp/>
+- Twitter: @tomk79 <http://twitter.com/tomk79/>
