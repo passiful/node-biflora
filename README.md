@@ -79,7 +79,8 @@ server.listen( 3000, function(){
 
 ## ライセンス - License
 
-MIT License
+Copyright (c)2016 Tomoya Koyanagi, and Passiful Project<br />
+MIT License https://opensource.org/licenses/mit-license.php
 
 
 ## 作者 - Author

@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tomk79/node-biflora.git"
+    "url": "git+https://github.com/passiful/node-biflora.git"
   },
   "author": "Tomoya Koyanagi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tomk79/node-biflora/issues"
+    "url": "https://github.com/passiful/node-biflora/issues"
   },
-  "homepage": "https://github.com/tomk79/node-biflora#readme",
+  "homepage": "https://github.com/passiful/node-biflora#readme",
   "dependencies": {
     "express": "^4.13.3",
     "phpjs": "^1.3.2",
