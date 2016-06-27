@@ -1,6 +1,6 @@
 {
   "name": "biflora",
-  "version": "0.0.1-alpha.1",
+  "version": "0.1.0",
   "description": "Web application framework on WebSocket.",
   "main": "lib/main.js",
   "scripts": {
