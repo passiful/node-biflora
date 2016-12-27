@@ -13289,7 +13289,7 @@ window.main = new (function(){
 	var jQuery = $ = require('./scripts/jquery.js');
 	var php = this.php = require('phpjs');
 	var __dirname = (function(){ var rtn = (function() { if (document.currentScript) {return document.currentScript.src;} else { var scripts = document.getElementsByTagName('script'), script = scripts[scripts.length-1]; if (script.src) {return script.src;} } })(); rtn = rtn.replace(/\\/g, '/').replace(/\/[^\/]*\/?$/, ''); return rtn; })();
-	var socket = this.socket = window.biflora
+	var biflora = this.biflora = window.biflora
 		.createSocket(
 			this,
 			io,
@@ -13325,7 +13325,7 @@ window.main = new (function(){
 	 */
 	this.socketTest = function(){
 		alert('send command `socketTest`');
-		socket.send(
+		biflora.send(
 			'socketTest',
 			{'message': 'socketTest from frontend.'} ,
 			function(data){
@@ -13341,7 +13341,7 @@ window.main = new (function(){
 	 */
 	this.broadcastTest = function(){
 		alert('send command `broadcast`');
-		socket.send(
+		biflora.send(
 			'broadcast',
 			{'message': 'broadcastTest from frontend.'} ,
 			function(data){
@@ -13357,7 +13357,7 @@ window.main = new (function(){
 	 */
 	this.socketSendFalse = function(){
 		alert('send command `socketSendFalse`');
-		socket.send(
+		biflora.send(
 			'socketSendFalse',
 			false ,
 			function(data){
@@ -13372,7 +13372,7 @@ window.main = new (function(){
 	 */
 	this.joinRoom = function(roomName, join){
 		alert((join?'join':'leave')+' to room `'+roomName+'`');
-		socket.joinRoom(
+		biflora.joinRoom(
 			roomName,
 			join ,
 			function(data){
@@ -13388,7 +13388,7 @@ window.main = new (function(){
 	 */
 	this.sendToRoom = function(roomName){
 		alert('send to room `'+roomName+'`');
-		socket.send(
+		biflora.send(
 			'sendToRoom',
 			{'message': 'sendToRoom from frontend.','room':roomName} ,
 			function(data){

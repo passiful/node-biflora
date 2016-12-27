@@ -8,7 +8,7 @@ var path = require('path');
 var fs = require('fs');
 var phpjs = require('phpjs');
 var packageJson = require(__dirname+'/../package.json');
-var svrCtrl = require(__dirname+'/../lib/svrCtrl.js');
+var svrCtrl = require(__dirname+'/backendJs/serverCtrl.js');
 
 
 describe('アプリケーション(ExpressServer)を起動する', function() {
@@ -30,7 +30,7 @@ describe('アプリケーション(ExpressServer)を起動する', function() {
 
 		driver.get('http://127.0.0.1:8080/')
 			.then(function(){
-				return driver.wait(until.titleIs('Baobab Framework'), 1000);
+				return driver.wait(until.titleIs('biflora'), 1000);
 			})
 			.then(function(){
 				return driver.getPageSource();

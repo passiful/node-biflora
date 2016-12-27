@@ -4,6 +4,7 @@
   "description": "Web application framework on WebSocket.",
   "main": "lib/main.js",
   "scripts": {
+    "start": "gulp watch;",
     "up": "node ./lib/cmd/server.js",
     "test": "gulp; mocha --ui tdd ./tests/"
   },
