@@ -36,7 +36,11 @@ var backendApis = {
 
 // middleware - biflora resources
 app.use( biflora.clientLibs() );
-biflora.setupWebSocket(server, backendApis, main);
+var options = {
+	'namespace': '/', // namespace for socket.io
+	'socketIo': require('socket.io')(server) // socket.io object
+};
+biflora.setupWebSocket(server, backendApis, main, options);
 
 // middleware
 app.use( function(req, res, next){
