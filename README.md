@@ -62,7 +62,7 @@ server.listen( 3000, function(){
 <script src="/biflora/biflora.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-	var socket = this.socket = window.biflora
+	var bfSocket = window.biflora
 		.createSocket(
 			new yourMainObjectClass(),
 			io,
@@ -75,6 +75,9 @@ server.listen( 3000, function(){
 				'api2': function( data, callback, main, biflora ){
 					callback('result2');
 				}
+			},
+			{ // Options
+				'server': 'https://example.com/' // server origin
 			}
 		)
 	;

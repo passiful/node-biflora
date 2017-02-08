@@ -2,9 +2,9 @@ window.biflora = (function(){
 
 	var biflora = function(){}
 
-	biflora.prototype.createSocket = function(main, io, apis){
-		var host = window.location.origin;
-		// host = 'http://127.0.0.1:60603/';
+	biflora.prototype.createSocket = function(main, io, apis, options){
+		options = options || {};
+		var host = options.server || window.location.origin;
 
 		return new (function(main, io, host, apis){
 			var _this = this;
